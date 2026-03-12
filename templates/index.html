@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        header {
+            padding: 1em;
+            box-shadow: 0 0 .5em grey;
+        }
+        header .logo {
+            display: flex;
+            gap: .25em;
+            color: orange;
+            align-items: center;
+        }
+        header .logo i { font-size: 2em; }
+        header .logo .title { font-size: 1.5em; font-weight: 750}
+        main { padding: 1em; }
+        #userIsAnonCont {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 .5em grey;
+            padding: 1em;
+            border-radius: .5em;
+            width: 80%;
+            text-align: center;
+            backdrop-filter: blur(1em);
+            display: block;
+        }
+        #userIsAnonCont h1 { color: orange; }
+        #userIsAnonCont .message { font-weight: 550; margin: 1em 0; }
+        #userIsAnonCont .btn {
+            background: orange;
+            color: white;
+            padding: .25em;
+            border-radius: .25em;
+            font-size: 1.25em;
+            font-weight: 750;
+            border: 2px solid orange;
+            transition: all .2s;
+        }
+        #userIsAnonCont .btn:active {
+            background: none;
+            color: orange;
+        }
+        .note-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .note-header {
+            background: orange;
+            padding: 1em;
+            border-radius: .5em;
+            display: flex;
+            gap: 1em;
+            align-items: center;
+            width: 100%;
+            color: white;
+        }
+        .note-header i { font-size: 2em; }
+        .note-header .title { font-size: 1.5em; font-weight: 750; width: 100%; }
+        .notes-list {
+            background: darkorange;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            border-radius: 0 0 1em 1em;
+        }
+        .notes-list .note {
+            display: flex;
+            padding: .75em .5em;
+            border-bottom: 1px solid orange;
+        }
+        .notes-list .note:last-child { border: none; }
+        .notes-list .note .title {
+            font-size: 1.15em;
+            font-weight: 600;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .notes-list .note i { font-size: 1.25em; margin: 0 .25em; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-sticky-note"></i>
+            <div class="title">Esletpe</div>
+        </div>
+    </header>
+    {% if request.user.is_anonymous %}
+    
+        <div id="userIsAnonCont">
+            <h1>Esletpe!</h1>
+            <div class="message">Siz Registratsyadan otpegensiz. Esletpeden paydalaniw ushin registratsyadan otin!</div>
+            <div class="btn" onclick="location.replace('{% url 'user:register' %}')">Registratsyadan otiw</div>
+        </div>
+    
+    {% else %}
+    <main>
+        
+        <div class="note-container">
+            <div class="note-header">
+                <i class="fas fa-sticky-note"></i>
+                <div class="title">Esletpeler</div>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="notes-list">
+                <div class="note">
+                    <div class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, ipsum quibusdam nihil obcaecati modi ducimus, quod culpa nostrum pariatur rerum dolores iusto exercitationem? Corporis quod ea error, reiciendis vitae quo.</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+                <div class="note">
+                    <div class="title">lorem</div>
+                    <i class="edit fas fa-pencil"></i>
+                    <i class="remove fas fa-trash-can"></i>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    {% endif %}
+
+<script>
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Esletpe Dizimi</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #3BCFFE;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: #fff;
+      width: 360px;
+      padding: 22px;
+      border-radius: 20px;
+      border: 3px solid #118682;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #118682;
+    }
+
+    h1 span {
+      color: #ff4d4d;
+    }
+
+    /* ADD */
+    .add-card {
+      background: #D9DCDD;
+      border: 2px solid #118682;
+      border-radius: 35px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .add-btn {
+      background: #25B510;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .add-btn a {
+      color: white;
+      font-size: 20px;
+    }
+
+    /* NOTES */
+    .note {
+      background: #D9DCDD;
+      border: 2px solid #118682;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .note h3 {
+      color: #118682;
+      margin-bottom: 6px;
+    }
+
+    .note p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .note-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .read-btn {
+      background: #118682;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .read-btn:hover {
+      background: #0e6f6c;
+    }
+
+    .actions a {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .edit { color: #118682; }
+    .delete { color: #e63946; }
+
+    .empty {
+      text-align: center;
+      color: #118682;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1><span>Esletpe</span> Dizimi 🗒️</h1>
+
+  <div class="add-card">
+    <p>Esletpe qosıw</p>
+    <div class="add-btn">
+      <a href="{% url 'notes:add_notes' %}">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+    </div>
+  </div>
+
+  {% for not in notes %}
+    <div class="note">
+      <h3>{{ not.title }}</h3>
+      <p>{{ not.content|truncatechars:100 }}</p>
+
+      <div class="note-footer">
+        <!-- DETAIL -->
+        <a href="{% url 'notes:detail' not.id %}" class="read-btn">
+          Oqıw→
+        </a>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+          <a href="{% url 'notes:edit_notes' not.id %}" class="edit">
+            <i class="fa-solid fa-pen"></i>
+          </a>
+          <a href="{% url 'notes:delete_notes' not.id %}" class="delete">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="empty">Ha'zirshe esletpeler joq.</p>
+  {% endfor %}
+</div>
+
+</body>
+</html>

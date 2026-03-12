@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Notes</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    body {
+      background: #3BCFFE;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      color: red;
+    }
+    
+    span {
+      color: #118682;
+    }
+    
+    h2 {
+      color: red;
+    }
+    
+    .list {
+      color: #118682;
+      border-bottom: 5px solid green;
+    } 
+    
+    
+    .box {
+      background: white;
+      padding: 2em;
+      border-radius: 1em;
+      width: 21em;
+      border: 3px solid #118682;
+    }
+    
+    label {
+     color: #118682;
+    }
+    
+    input {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1em;
+      background: #D9DCDD;
+      width: 23em;
+      border-radius: 5px;
+      border: 2px solid #118682;
+      margin-bottom: 1em;
+      margin-top: 0.5em; 
+    }
+    
+    .btn {
+      margin-top: 2em;
+      background: #D9DCDD;
+      color: #118682;
+      padding: 1em;
+      width: 25em;
+      border-radius: 5px;
+      border: 2px solid #118682;
+    }
+    
+    
+  </style>
+</head>
+
+<body>
+<form method="post">
+  {% csrf_token %}
+  <div class="box">
+    <a class="list" href="{% url 'notes:notes_list' %}"><h2>Qaytıw</h2></a>
+  <div>
+    <h1><span>Esletpe</span>Qosıw 📝 </h1>
+  </div>
+    <label><h3>Tema</h3></label>
+    <input type="text" placeholder="Tema..." name="title" required>
+    <label><h3>Tekst</h3></label>
+    <input type="text" placeholder="Tekst..." name="content" rows="5" cols="40" required>
+    <button class="btn" type="submit">Saqlaw</button>
+</form>
+  </div>
+</body>
+
+</html>
